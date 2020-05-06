@@ -1,0 +1,23 @@
+version: '3'
+services:
+  elephant:
+    image: swallowstalker/simplehttp:1.0
+    environment: 
+    - PORT=8001
+    ports:
+      - 8001:8001
+ 
+  dinosaur:
+    image: swallowstalker/simplehttp:1.0
+    environment: 
+    - PORT=8009
+    ports:
+      - 8009:8009
+
+  haproxy:
+    image: haproxy:1.8.16-alpine
+    volumes: 
+      - .:/usr/local/etc/haproxy/
+    ports:
+      - 8005:8005
+      - 8099:8099
